@@ -1,0 +1,158 @@
+Git is a version control system that tracks changes in our files and helps us go back to any previous version whenever needed.
+ It keeps our projects organized and safe even if we make mistakes. We need it to collaborate smoothly with others without
+  losing work or creating messy file versions.
+Install git
+Stages-
+  U-untracked // git is not keeping an eye on this folder yet
+  A-staged // git is now aware of it
+  C- committed
+Create first checkpoint by committing.
+Create second checkpoint. Accept and commit.
+To check the number of checkpoints- got to terminal and type the command // git log --oneline
+To ignore a file // make a new file named .gitignore and type the name of the file in it, it will get ignored.
+To go to the previous checkpoint // git reset --hard HEAD~1/2/....(basically removes it)
+
+1. Status and logs-- making possibilities-- BRANCHING 
+Git doesnt know about the file one creates, therefore one needs to initialize it. After that it recognizes the folder hence we can create 
+tracked, untracked,modified, saved checkpoints. Basically git can manage the file now.
+Git can do interesting things-
+1. git status- checks the files stages before and after commit. // git status -s
+2. git log- tells commit histories. // git log --oneline
+//BRANCHING
+Make a file and stage and commit
+to make a branch- git branch name
+write a line and stage and commit.
+switch back to main 
+to switch between - git switch name
+now merge(it happens in main only)- git merge name(the duplicate)
+stage and commit.
+conflict can arise if the ith line in both are same, git gets confused so as to what it should accept.
+There are three options in this case-
+1. accept current change.(the line in main)
+2. accept incoming change.(the line in (name/duplicate))
+3. accept both
+you have to stage and commit again
+how many branches??-git branch
+to kknow the path- git log ---oneline --graph
+//MERGING TECHNIQUES-
+there are many but only two are relevant.
+1. fast forward merge
+2. three way merge
+Fast-Forward Merge —
+
+Used when the main branch has not diverged after the feature branch was created.
+
+Only the feature branch has new commits.
+
+Git simply moves the HEAD pointer to the latest commit of the feature branch.
+
+No new merge commit is created.
+
+The commit history remains linear.
+
+
+Three-Way Merge — 
+
+Used when both branches have new commits after branching.
+
+Git compares three commits: the base commit, the current branch’s latest commit, and the feature branch’s latest commit.
+
+A new merge commit is created to combine both branch histories.
+
+Commit history becomes non-linear and shows the merge point.
+
+May require manual conflict resolution if changes overlap.
+
+To delete a branch-// git branch -d (name)
+STASHING-
+1. create a new branch and switch- git switch -C name
+2. you make some changes in the main and try to switch to feature, the changes may get deleted.
+to avoid that use stash. changes dont get added but git stores it in the memory. // git stash
+3. you can come back to main branch and when you want the change-// git stash apply
+to delete stash-//git stash clear
+For project-
+1. owner will create a repository
+PUSHING A SINGLE FILE TO GITHUB-
+Initialize Git using git init
+
+Stage only that file using git add <file-name>
+
+Commit the file using git commit -m "message"
+
+Add GitHub repository link using git remote add origin <repo-URL>
+
+Rename branch to main using git branch -M main
+
+Push the file to GitHub using git push -u origin main
+
+For future updates:
+
+git add <file-name>
+
+git commit -m "message"
+
+git push
+2. Owner adds a collaborator:
+
+Go to Settings → Collaborators → Add collaborator
+
+
+
+3. Collaborator receives the invitation and accepts it.
+
+
+4. Collaborator clones the repository to their local system using the repo URL:
+
+git clone <repo-URL>
+
+
+
+5. Collaborator creates a new branch for their work:
+
+git checkout -b <branch-name>
+
+
+
+6. Collaborator writes code/changes in that branch.
+
+
+7. After completion, Collaborator commits the changes:
+
+git add .
+
+git commit -m "message"
+
+
+
+8. Collaborator pushes their branch to GitHub:
+
+git push -u origin <branch-name>
+
+
+
+9. Owner reviews changes and merges the collaborator’s branch into the main branch.
+
+
+10. Owner pushes the updated main branch if needed:
+
+git push
+
+
+
+11. After merge, Collaborator pulls updates to view latest work:
+
+git pull
+
+conclusion-
+Git and GitHub together provide a complete version control system for tracking changes, maintaining history, and collaborating on projects. 
+Git works locally where files move through different states like modified → staged → committed, while GitHub acts as a remote repository
+ where code is stored and shared. Using commands like git add, git commit, and git push, we upload our work to GitHub, 
+ and using git pull, we bring updated work back to our system.
+
+Branching allows developers to work independently on features without disturbing the main project,
+
+ and merging combines those changes back into the main branch once the work is tested and complete.
+  Collaboration becomes seamless by adding contributors, letting them clone the project, create their own branches, push their work,
+  
+ and then merge changes through the repository owner. Overall, Git and GitHub make software development structured, safe, 
+ and teamwork-friendly, ensuring continuous progress with proper control over every change.
